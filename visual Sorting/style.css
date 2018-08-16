@@ -1,0 +1,22 @@
+.number {
+  position: absolute;
+  background: #825;
+  height: 200px;
+  width: 4px;
+  color: #ffffff;
+  bottom: 0;
+  padding: 1px;
+  
+  
+}
+.number-height {
+  padding: 3px;
+  float: left;
+  height: 400px;
+  position: relative;
+  margin: 2px;
+}
+ 
+.block-data {
+  position: relative;
+}
