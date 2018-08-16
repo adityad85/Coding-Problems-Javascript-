@@ -27,12 +27,20 @@ const bigFactorial = (n) => {
   return reversedAnswer;
 }
 
+function reversestr(str) {
+  const loop = ([head, ...tail]) => {
+    if (head === undefined) return '';
+    return loop(tail) + head;
+  };
+  return loop(str);
+}
+
 const sum = (a, b) => {
   // a must be less than b 
-  if(a.length>b.length){
-    const swap = a;
-    b=a;
-    a=swap; 
+  if (a.length > b.length) {
+    const swap = b;
+    b = a;
+    a = swap;
   }
   let r = 0;
   let carry = 0;
@@ -52,7 +60,7 @@ const sum = (a, b) => {
   if (carry !== 0) {
     stringAnswer += carry;
   }
-  return stringAnswer;
+  return reversestr(stringAnswer);
 };
 
 const fib = (n) => {
@@ -66,11 +74,25 @@ const fib = (n) => {
   return tempAnswer;
 }
 
-console.log(sum('56', '411'));
-console.log(fib(499));
+const fib2 = (n) => {
+  const fibArray = ['0', '1'];
+  for (let i = 2; i <= n; i += 1) {
+    fibArray[i] = sum(reversestr(fibArray[i - 1]), reversestr(fibArray[i - 2]));
+  }
+  return fibArray[n];
+};
+
+console.log(fib2(499));
+console.log(fib2(7));
+console.log(fib2(8));
+console.log(fib2(9));
+console.log(fib2(10));
 
 
 // console.log(bigFactorial(499));
 // console.log(bigFactorial(500));
 // console.log(stringAnswer);
 // console.log(str.substr(1));
+
+// 499th fib number
+// 86168291600238450732788312165664788095941068326060883324529903470149056115823592713458328176574447204501
